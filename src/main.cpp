@@ -1,5 +1,5 @@
 /*
-  Program untuk update firmware lewat OTA dengan esp32 sebagai AP
+  Program untuk update firmware lewat OTA dengan esp32 sebagai Access Point
 */
 #include "main.h"
 
@@ -21,6 +21,7 @@ void handleImg1()
   server.streamFile(hideImg, "image/png");
   hideImg.close();
 }
+
 void handleImg2()
 {
   File showImg = LittleFS.open("/show.png", "r");
@@ -38,6 +39,7 @@ void handleCSS()
     cssFile.close();
   }
 }
+
 void handleJS()
 {
   server.sendHeader("Content-Type", "text/js");
@@ -48,6 +50,7 @@ void handleJS()
     jsFile.close();
   }
 }
+
 void handleJquery()
 {
   server.sendHeader("Content-Encoding", "text/js");
