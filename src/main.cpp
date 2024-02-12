@@ -38,7 +38,6 @@ void handleCSS()
     cssFile.close();
   }
 }
-
 void handleJS()
 {
   server.sendHeader("Content-Type", "text/js");

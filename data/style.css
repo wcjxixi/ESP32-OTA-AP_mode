@@ -7,6 +7,7 @@
   font-family: "Poppins", sans-serif;
 
 } */
+
 body{
     background: #675edf;
     font-family: sans-serif;
@@ -33,8 +34,8 @@ body{
 .form img {
     position: absolute;
     height: 20px;
-    top: 205px;
-    right: 60px;
+    top: 263px;
+    right: 50px;
     cursor: pointer;
 }
 
@@ -42,7 +43,7 @@ body{
     outline: 0;
     background: #f2f2f2;
     border-radius: 4px;
-    width: 100%;
+    width: 92%;
     border: 0;
     margin: 15px 0;
     padding: 15px;
@@ -95,7 +96,7 @@ span {
   filter:drop-shadow(0 0 2px #000000);
   border-radius: 5px;
   width: 620px;
-  height: 350px;
+  height: 300px;
   background-color: #e5e3f7;
   padding:40px;
 }
