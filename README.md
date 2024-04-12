@@ -1,19 +1,9 @@
 # ESP32 OTA (Over-the-Air) via AP Mode
 
-### Deskripsi Project
+* AP 模式下的 ESP32 OTA (Over-the-Air)
+* 适用于 Arduino 开发环境
+* 移除了登录相关的文件和代码，访问 ip 地址或 esp32.local 直接显示上传固件页面
 
-Project ini bertujuan untuk memfasilitasi pembaruan firmware secara nirkabel (Over-the-Air) pada perangkat ESP32 menggunakan mode Access Point (AP mode). Dengan menggunakan teknologi ini, pengguna dapat melakukan pembaruan firmware ESP32 tanpa perlu menghubungkan perangkat ke laptop atau komputer secara fisik.
-
-### Fitur
-
-* Pembaruan Nirkabel: Memungkinkan pengguna untuk memperbarui perangkat lunak ESP32 melalui jaringan Wi-Fi tanpa koneksi fisik.
-* Mode Access Point (AP Mode): Mengaktifkan perangkat ESP32 untuk berfungsi sebagai titik akses Wi-Fi sehingga perangkat dapat terhubung secara langsung untuk pembaruan.
-* Antarmuka Pengguna Sederhana: Menyediakan antarmuka pengguna yang sederhana untuk mengatur dan memulai pembaruan perangkat lunak.
-
-### Cara Penggunaan
-
-1. Siapkan Perangkat ESP32: Pastikan perangkat ESP32 telah diprogram dengan kode yang mendukung OTA dan AP mode.
-2. Hubungkan ke Access Point: Sambungkan perangkat ke jaringan Wi-Fi yang dibuat oleh ESP32 dalam mode Access Point.
-3. Buka Antarmuka Pengguna: Buka antarmuka pengguna di perangkat Anda melalui web browser.
-4. Pilih File Pembaruan: Pilih file pembaruan yang ingin Anda terapkan pada perangkat ESP32.
-5. Mulai Pembaruan: Mulai proses pembaruan dan tunggu hingga selesai.
+# 使用方法
+* `data` 文件夹放到项目 (Sketch) 文件夹中
+* Arduino IDE 安装 [arduino-esp32fs-plugin](https://github.com/lorol/arduino-esp32fs-plugin) 插件 (新版的 Arduino IDE 2 好像不支持)，Arduino IDE 中选择好开发板参数后，点 `ESP32 Sketch Data Upload`, 然后选 `LittleFS`，会自动将 `data` 下的所有文件上传到开发板
