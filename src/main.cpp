@@ -8,26 +8,30 @@
    the LittleFS file system
 */
 
+/*
 void handleLogin()
 {
   File uploadPage = LittleFS.open("/index.html", "r");
   server.streamFile(uploadPage, "text/html");
   uploadPage.close();
 }
-
+*/
+/*
 void handleImg1()
 {
   File hideImg = LittleFS.open("/hide.png", "r");
   server.streamFile(hideImg, "image/png");
   hideImg.close();
 }
-
+*/
+/*
 void handleImg2()
 {
   File showImg = LittleFS.open("/show.png", "r");
   server.streamFile(showImg, "show/png");
   showImg.close();
 }
+*/
 
 void handleCSS()
 {
@@ -40,6 +44,7 @@ void handleCSS()
   }
 }
 
+/*
 void handleJS()
 {
   server.sendHeader("Content-Type", "text/js");
@@ -50,6 +55,7 @@ void handleJS()
     jsFile.close();
   }
 }
+*/
 
 void handleJquery()
 {
@@ -65,7 +71,7 @@ void handleJquery()
 void handleUploadFile()
 {
   server.sendHeader("Content-Type", "text/html");
-  File uploadFile = LittleFS.open("/upload.html", "r");
+  File uploadFile = LittleFS.open("/index.html", "r");
   if (uploadFile)
   {
     server.streamFile(uploadFile, "text/html");
@@ -104,6 +110,7 @@ void handleUpdate()
     {
       server.send(200, "text/html", "Update successful. Rebooting...<a href='/'>Return to main page</a>");
       server.client().flush(); // Flush the response
+      ESP.restart(); // reboot esp32
     }
     else
     {
@@ -123,12 +130,11 @@ void otaWebServerTask(void *parameter)
     Serial.println("LittleFS successfully mounted");
   }
 
-  MDNS.begin("otaesp32");
+  MDNS.begin("esp32"); // http://esp32.local
 
-  server.on("/login", HTTP_GET, handleLogin);
-  server.on(
-      "/upload", HTTP_POST, []()
-      {
+  server.on("/", HTTP_GET, handleUploadFile);
+  server.on("/upload", HTTP_POST, []()
+    {
     server.sendHeader("Connection", "close");
     server.send(200, "text/plain", (Update.hasError()) ? "FAIL" : "OK");
     ESP.restart(); },
@@ -137,11 +143,11 @@ void otaWebServerTask(void *parameter)
         handleUpdate();
       });
   server.on("/style.css", HTTP_GET, handleCSS);
-  server.on("/upload.html", HTTP_GET, handleUploadFile);
-  server.on("/min.js", HTTP_GET, handleJS);
+  //server.on("/upload.html", HTTP_GET, handleUploadFile);
+  //server.on("/min.js", HTTP_GET, handleJS);
   server.on("/jquery.min.js", HTTP_GET, handleJquery);
-  server.on("/hide.png", HTTP_GET, handleImg1);
-  server.on("/show.png", HTTP_GET, handleImg2);
+  //server.on("/hide.png", HTTP_GET, handleImg1);
+  //server.on("/show.png", HTTP_GET, handleImg2);
   server.begin();
 
   while (true)
